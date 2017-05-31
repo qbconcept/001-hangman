@@ -43,11 +43,7 @@ function startUp() {
     'use strict';
     entryGenerator();
     var alphabetGrid = "";
-
-    var alphabetArrayALT = new Array();
-
     for (i = 0; i < alphabetArray.length; i += 1) {
-        alphabetArrayALT[i] = "gpl" + i;
         alphabetGrid = alphabetGrid + "<gp-letter id=\"gpl-" + i + "\" class=\"button\" onclick=\"letterCheck("
                                     + i + ")\">" + alphabetArray.charAt(i) + "</gp-letter>";
         // In case of responsivity below won't work properly
