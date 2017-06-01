@@ -47,7 +47,7 @@ function startUp() {
     for (i = 0; i < alphabetString.length; i += 1) {
         alphabetArray[i] = alphabetString.charAt(i);
         alphabetGrid = alphabetGrid + "<gp-letter id=\"gpl-" + i + "\" class=\"button\" onclick=\"letterCheck("
-                                    + i + ")\">" + alphabetString.charAt(i) + "</gp-letter>";
+                                    + i + ")\">" + alphabetArray[i] + "</gp-letter>";
         // In case of responsivity below won't work properly
         if ((i + 1) % 7 === 0) { alphabetGrid = alphabetGrid + "<div style='clear:both;'></div>"; }
     }
@@ -85,9 +85,8 @@ function letterCheck(no) {                                                      
                                                         + "Gram ostatni raz!</span>";
     }
     if (fails >= 9) {
-        document.getElementById("alphabet").innerHTML = "<span class=\"looser\">Wisisz!</span>"
-                                                        + "<br /><br /><span class=\"reset button\" "
-                                                        + "onclick=\"location.reload()\">"
+        document.getElementById("alphabet").innerHTML = "<span class=\"looser\">Wisisz!</span><br /><br />"
+                                                        + "<span class=\"reset button\" onclick=\"location.reload()\">"
                                                         + "Gram ostatni raz!</span>";
     }
 }
