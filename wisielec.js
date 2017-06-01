@@ -4,6 +4,7 @@ var entry = "",
     hiddenEntry = "",
     alphabetString = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ",
     alphabetArray = new Array(),
+    alphabetGrid = "",
     fails = 0,
     successSound = document.createElement("audio"),
     failSound = document.createElement("audio"),
@@ -43,7 +44,6 @@ function entryGenerator () {
 function startUp() {
     'use strict';
     entryGenerator();
-    var alphabetGrid = "";
     for (i = 0; i < alphabetString.length; i += 1) {
         alphabetArray[i] = alphabetString.charAt(i);
         alphabetGrid = alphabetGrid + "<gp-letter id=\"gpl-" + i + "\" class=\"button\" onclick=\"letterCheck("
