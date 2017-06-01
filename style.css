@@ -24,7 +24,7 @@ gp-entry {
     font-size: 5rem;
     letter-spacing: 0.5rem;
     font-weight: 700;
-    min-height: 2.3em;
+    min-height: 2.3rem;
 }
 gp-game {
     display: flex;
@@ -61,6 +61,18 @@ gp-letter:hover {
     padding: 1.8rem;                        /* padding + border     */
     border: 0.2rem solid gray;              /* makes it even 2.0rem */
     border-radius: 2rem;
+}
+.gp-letter-success {
+    background: #003300 !important;
+    color: #00C000 !important;
+    border: 0.2rem solid #00C000 !important;
+    cursor: default;
+}
+.gp-letter-fail {
+    background: #330000 !important;
+    color: #C00000 !important;
+    border: 0.2rem solid #C00000 !important;
+    cursor: default;
 }
 .reset {
     cursor: pointer;

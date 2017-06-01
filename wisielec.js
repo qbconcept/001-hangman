@@ -2,7 +2,8 @@ const wikiurl = "https://pl.wikiquote.org/w/api.php?action=query&format=json&ori
                 + "titles=Przys%C5%82owia+polskie&utf8=1&rvprop=content&rvlimit=1";
 var entry = "",
     hiddenEntry = "",
-    alphabetArray = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ",
+    alphabetString = "AĄBCĆDEĘFGHIJKLŁMNŃOÓPQRSŚTUVWXYZŹŻ",
+    alphabetArray = new Array(),
     fails = 0,
     successSound = document.createElement("audio"),
     failSound = document.createElement("audio"),
@@ -43,9 +44,10 @@ function startUp() {
     'use strict';
     entryGenerator();
     var alphabetGrid = "";
-    for (i = 0; i < alphabetArray.length; i += 1) {
+    for (i = 0; i < alphabetString.length; i += 1) {
+        alphabetArray[i] = alphabetString.charAt(i);
         alphabetGrid = alphabetGrid + "<gp-letter id=\"gpl-" + i + "\" class=\"button\" onclick=\"letterCheck("
-                                    + i + ")\">" + alphabetArray.charAt(i) + "</gp-letter>";
+                                    + i + ")\">" + alphabetString.charAt(i) + "</gp-letter>";
         // In case of responsivity below won't work properly
         if ((i + 1) % 7 === 0) { alphabetGrid = alphabetGrid + "<div style='clear:both;'></div>"; }
     }
@@ -56,34 +58,27 @@ function printEntry() {
     'use strict';
     document.getElementById("entry").innerHTML = hiddenEntry;
 }
-function letterCheck(no) {
+function letterCheck(no) {                                                                    /* exported letterCheck */
     'use strict';
-    /* exported letterCheck */
     var success = false,
         letter = "gpl-" + no;
     for (i = 0; i < entry.length; i += 1) {
-        if (entry.charAt(i) === alphabetArray.charAt(no)) {
-            hiddenEntry = hiddenEntry.revealLetter(i, alphabetArray.charAt(no));
+        if (entry.charAt(i) === alphabetString.charAt(no)) {
+            hiddenEntry = hiddenEntry.revealLetter(i, alphabetString.charAt(no));
             success = true;
         }
     }
     if (success === true) {
         successSound.play();
-        document.getElementById(letter).style.background = "#003300";
-        document.getElementById(letter).style.color = "#00C000";
-        document.getElementById(letter).style.border = "0.2rem solid #00C000";
-        document.getElementById(letter).style.cursor = "default";
+        document.getElementById(letter).className += " gp-letter-success";
         printEntry();
     } else {
         failSound.play();
-        document.getElementById(letter).style.background = "#330000";
-        document.getElementById(letter).style.color = "#C00000";
-        document.getElementById(letter).style.border = "0.2rem solid #C00000";
-        document.getElementById(letter).style.cursor = "default";
-        document.getElementById(letter).setAttribute("onClick", ";");
+        document.getElementById(letter).className += " gp-letter-fail";
         fails += 1;
         document.getElementById("gallows").innerHTML = "<img src=\"img/s" + fails + ".jpg\" alt=\"\" />";
     }
+    document.getElementById(letter).setAttribute("onClick", ";");
     if (entry === hiddenEntry) {
         document.getElementById("alphabet").innerHTML = "<span class=\"winner\">Brawo!</span><br /> <br />"
                                                         + "<span class=\"reset button\" onclick=\"location.reload()\">"
