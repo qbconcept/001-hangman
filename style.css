@@ -81,7 +81,7 @@ body {
     color: white;
 }
 .winner {
-    color: green;
+    color: #00C000;
     font-weight: 700;
 }
 .looser {
