@@ -14,10 +14,10 @@ body {
     color: lightgray;
     font: 4rem "Courier New", monospace;
 }
-gallows-pole {
+#gallows-pole {
     flex: 1;
 }
-gp-entry {
+#entry {
     padding: 1em 0;
     display: block;
     text-align: center;
@@ -26,25 +26,25 @@ gp-entry {
     font-weight: 700;
     min-height: 2.3rem;
 }
-gp-game {
+#game {
     display: flex;
     flex-direction: row;
     margin: 0 auto;
 }
-gp-gallows {
+#gallows {
     flex: 1;
     width: 50%;
     min-height: 280px;
     text-align: center;
 }
-gp-gallows img {
+#gallows img {
     width: 80%;
 }
-gp-alphabet {
+#alphabet {
     flex: 1;
     width: 50%;
 }
-gp-letter {
+.letter {
     float: left;
     width: 5rem;
     height: 5rem;
@@ -52,7 +52,7 @@ gp-letter {
     text-align: center;
     cursor: pointer;
 }
-gp-letter:hover {
+.letter:hover {
     background-color: #111;
     border-color: white;
     color: white;
@@ -62,13 +62,13 @@ gp-letter:hover {
     border: 0.2rem solid gray;              /* makes it even 2.0rem */
     border-radius: 2rem;
 }
-.gp-letter-success {
+.letter-success {
     background: #003300 !important;
     color: #00C000 !important;
     border: 0.2rem solid #00C000 !important;
     cursor: default;
 }
-.gp-letter-fail {
+.letter-fail {
     background: #330000 !important;
     color: #C00000 !important;
     border: 0.2rem solid #C00000 !important;

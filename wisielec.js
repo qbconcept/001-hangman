@@ -46,8 +46,8 @@ function startUp() {
     entryGenerator();
     for (i = 0; i < alphabetString.length; i += 1) {
         alphabetArray[i] = alphabetString.charAt(i);
-        alphabetGrid = alphabetGrid + "<gp-letter id=\"gpl-" + i + "\" class=\"button\" onclick=\"letterCheck("
-                                    + i + ")\">" + alphabetArray[i] + "</gp-letter>";
+        alphabetGrid = alphabetGrid + "<div id=\"gpl-" + i + "\" class=\"letter button\" onclick=\"letterCheck("
+                                    + i + ")\">" + alphabetArray[i] + "</div>";
         // In case of responsivity below won't work properly
         if ((i + 1) % 7 === 0) { alphabetGrid = alphabetGrid + "<div style='clear:both;'></div>"; }
     }
@@ -70,11 +70,11 @@ function letterCheck(no) {                                                      
     }
     if (success === true) {
         successSound.play();
-        document.getElementById(letter).className += " gp-letter-success";
+        document.getElementById(letter).className += " letter-success";
         printEntry();
     } else {
         failSound.play();
-        document.getElementById(letter).className += " gp-letter-fail";
+        document.getElementById(letter).className += " letter-fail";
         fails += 1;
         document.getElementById("gallows").innerHTML = "<img src=\"img/s" + fails + ".jpg\" alt=\"\" />";
     }
